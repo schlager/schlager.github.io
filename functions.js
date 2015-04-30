@@ -40,13 +40,13 @@ $(document).ready(function () {
         }
     });
     
-    $("#menuButton").click(function () {
-        if (displayed === false) {
-            $("#sidebar").fadeIn();
-            displayed = true;
-        } else {
-            $("#sidebar").fadeOut();
-            displayed = false;
-        }
-    });
+//    $("#menuButton").click(function () {
+//        if (displayed === false) {
+//            $("#sidebar").fadeIn();
+//            displayed = true;
+//        } else {
+//            $("#sidebar").fadeOut();
+//            displayed = false;
+//        }
+//    });
 });
