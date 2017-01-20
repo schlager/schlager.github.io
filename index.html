@@ -25,6 +25,8 @@
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="js/modernizr.custom.js"></script>
+<script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>    
+<link rel="stylesheet" href="http://cdn.anychart.com/css/latest/anychart-ui.min.css" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -98,25 +100,8 @@
       <h2>Lines of Code</h2>
       <hr>
     </div>
-    <div class="row">
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="50000"> <span class="percent">50,000</span> </span>
-        <h4>Java</h4>
-      </div>
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="10000"> <span class="percent">10,000</span> </span>
-        <h4>Javascript</h4>
-      </div>
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="5000"> <span class="percent">5,000</span> </span>
-        <h4>Python</h4>
-      </div>
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="5000"> <span class="percent">5,000</span> </span>
-        <h4>Html</h4>
-      </div>
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="5000"> <span class="percent">5,000</span> </span>
-        <h4>C</h4>
-      </div>
-      <div class="col-md-4 col-sm-6 skill"> <span class="chart" data-percent="2500"> <span class="percent">2,500</span> </span>
-        <h4>R</h4>
-      </div>
+    <div class="row" style="height: ">
+      <div id="bar_chart" style="height: 450px"></div>
     </div>
   </div>
 </div>
@@ -265,6 +250,65 @@
     var link = "mailto:noah@mavin.co";
     window.location.href = link;
   }
+</script>
+<script type="text/javascript">   
+anychart.onDocumentReady(function() {
+
+  anychart.theme({defaultFontSettings: {fontColor: "#121d1f"}});
+
+  // data
+  var data = anychart.data.set([
+    ['Java', 50000],
+    ['Javascript', 10000],
+    ['Python', 5000],
+    ['HTML', 5000],
+    ['C', 5000],
+    ['R', 2500]
+  ]);
+
+  // chart type
+  chart = anychart.bar();
+  chart.background().fill('#7bc3d1');
+
+  // set data and adjust color
+  var series = chart.bar(data);
+  series.fill("#ffffff");
+  series.stroke("#ffffff");
+
+  chart.container("bar_chart");
+  chart.draw();
+}); 
+  // anychart.onDocumentReady(function() {
+  //   // create data set on our data
+  //   var data =[
+  //     ['Java', 50000],
+  //     ['Javascript', 10000],
+  //     ['Python', 5000],
+  //     ['HTML', 5000],
+  //     ['C', 5000],
+  //     ['R', 2500]
+  //   ];
+
+  //   // create area chart
+  //   chart = anychart.bar();
+  //   chart.background().fill('#7bc3d1');
+
+  //   // turn on chart animation
+  //   chart.animation(true);
+
+  //   // set container id for the chart
+  //   chart.container('bar_chart');
+
+  //   var series = anychart.data.mapAsTable(data);
+  //   for (var i in series) {
+  //     chart.bar(series[i]);
+  //   }
+  //   chart.xAxis({title:null});
+  //   chart.yAxis({title:null});
+
+  //   // initiate chart drawing
+  //   chart.draw();
+  // });
 </script>
 <script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
 <script type="text/javascript" src="js/bootstrap.js"></script> 
